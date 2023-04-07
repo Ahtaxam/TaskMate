@@ -1,18 +1,17 @@
-import React, {useState} from 'react'
+import React, { useMemo }  from 'react'
 
-function Tasks() {
-    const [activeTasks, setActiveTasks] = useState([]);
+
+
+function Tasks({tasklist , id}) {
+
   return (
     <div id='tasks'>
-        <div id='activeTasks'>
-            <h3>Active Tasks</h3>
-        </div>
-
-        <div id='completedTasks'>
-            <h3>Completed Tasks</h3>
-        </div>
+      <span id='tasks__heading'>Active Tasks</span>
+      <div id='activeTasks'>
+        
+      </div>
     </div>
   )
 }
 
-export default Tasks
+export default (Tasks)
