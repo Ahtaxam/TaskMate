@@ -5,6 +5,8 @@
     text-align: center;
     margin: 40px auto;
     color: #2e363b;
+    color: #9C27B0;
+    font-weight: bold;
 }
 #Header{
     display: flex;
@@ -18,11 +20,12 @@
 #addTask{
     border: none;
     padding: 8px;
-    border-radius: 10px;
+    border-radius: 15px;
     outline: none;
     padding: 20px;
-    width: 60%;
+    width: 50%;
 }
+
 #addTask::placeholder{
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
@@ -33,8 +36,21 @@
     outline: none;
     border-radius: 5px;
     width: 90px;
-    background-color: #24a0ed;
+    background-color: #9C27B0;
     color: white;
-    
-    
+    cursor: pointer;
+}
+#tasks{
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+#tasks__heading{
+    font-family: 'Poppins', sans-serif;    
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 40px auto;
+    color: #9C27B0;
+    display: block;
+    text-align: center;
 }
