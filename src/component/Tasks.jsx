@@ -1,28 +1,45 @@
 import React  from 'react'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import SingleTask from './SingleTask'
 
 
 
-function Tasks({tasklist , id}) {
+function Tasks({tasklist , onDelete}) {
 
   const handleOnClick = (id) => {
-    console.log( id)
+    onDelete(id)
   }
 
 
   return (
     <div id='tasks'>
       <span id='tasks__heading'>Active Tasks</span>
-      <div id='activeTasks'>
-        {
-          tasklist.map((obj, index) => (
-            <div key={index}>
-            <SingleTask name = {obj.task} onclick = {handleOnClick} id = {index} ></SingleTask>
-            </div>
-          )
-          )
-        }
-      </div>
+      <DragDropContext onDragEnd={() => {}}>
+      <Droppable droppableId="tasks">
+        {(provided) => (
+          <div id='activeTasks' {...provided.droppableProps} ref = {provided.innerRef} >
+          {
+            tasklist.map((obj, index) => (
+              <Draggable key={obj.id} draggableId={obj.id.toString()} index={index}>
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <SingleTask name={obj.task} id={obj.id} onclick={handleOnClick} />
+                  </div>
+                )}
+              </Draggable>
+            )
+            )
+          }
+          {provided.placeholder}
+        </div>
+        )
+      }
+      </Droppable>
+      </DragDropContext>
     </div>
   )
 }
