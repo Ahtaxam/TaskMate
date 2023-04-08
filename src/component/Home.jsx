@@ -24,11 +24,25 @@ function Home() {
     setValue('');
   }
 
-  useEffect(() => {
+
+  const getTasks = () => {
     const tasks = localStorage.getItem('tasks');
     if(tasks){
       setTasks(JSON.parse(tasks))
     }
+  }
+
+  const handleDeleteTask = (id) => {
+    let task = [...tasks]
+    task = task.filter((obj) => obj.id !== id)
+    setTasks(task)
+    localStorage.setItem('tasks', JSON.stringify(task));
+  }
+
+
+
+  useEffect(() => {
+    getTasks();
   },[value])
 
 
@@ -43,7 +57,7 @@ function Home() {
         </div>
 
         <hr/>
-        <Tasks tasklist = {tasks}/>
+        <Tasks tasklist = {tasks} onDelete = {handleDeleteTask} />
     </div>
   )
 }
