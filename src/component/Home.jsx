@@ -40,6 +40,17 @@ function Home() {
   }
 
 
+  const handleDrag = (result) => {
+    if (!result.destination) return
+    let items = [...tasks]
+    const [reorderedItem] = items.splice(result.source.index, 1)
+    items.splice(result.destination.index, 0, reorderedItem)
+    setTasks(items)
+    localStorage.setItem('tasks', JSON.stringify(items));
+  }
+
+
+
 
   useEffect(() => {
     getTasks();
@@ -57,7 +68,7 @@ function Home() {
         </div>
 
         <hr/>
-        <Tasks tasklist = {tasks} onDelete = {handleDeleteTask} />
+        <Tasks tasklist = {tasks} onDelete = {handleDeleteTask} onDrag = {handleDrag}/>
     </div>
   )
 }
