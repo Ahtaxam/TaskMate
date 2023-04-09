@@ -4,17 +4,21 @@ import SingleTask from './SingleTask'
 
 
 
-function Tasks({tasklist , onDelete}) {
+function Tasks({tasklist , onDelete , onDrag}) {
 
   const handleOnClick = (id) => {
     onDelete(id)
+  }
+
+  const handleDrag = (result) => {
+    onDrag(result)
   }
 
 
   return (
     <div id='tasks'>
       <span id='tasks__heading'>Active Tasks</span>
-      <DragDropContext onDragEnd={() => {}}>
+      <DragDropContext onDragEnd={handleDrag}>
       <Droppable droppableId="tasks">
         {(provided) => (
           <div id='activeTasks' {...provided.droppableProps} ref = {provided.innerRef} >
