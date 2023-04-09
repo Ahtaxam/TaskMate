@@ -4,7 +4,8 @@ import  {VscListUnordered}  from 'react-icons/vsc';
 
 function SingleTask({name , onclick , id}) {
   return (
-    <div id='singleTask' >
+        <div id='singleTask'
+         >
         <div id='singleTask_define'>
         <VscListUnordered  id='singleTask_icon' />
         <span id='singleTask_text' >{name}</span>
